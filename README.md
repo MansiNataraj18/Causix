@@ -1,32 +1,30 @@
 # Causix
 
 Root-cause analysis, impact analysis and fix recommendation for code issues, built from small
-single-purpose agents on a shared core.
+single-purpose agents on a shared core. This repository is the entry point: each component lives in
+its own repository and is linked here as a git submodule.
 
-```
-core/                    shared engines + reasoning contracts      (package: causix_core)
-agents/
-  issue/                 raw report -> structured issue            (causix_issue_agent)
-  rca/                   root cause analysis                       (causix_rca_agent)
-  impact/                blast-radius explanation                  (causix_impact_agent)
-  fix/                   fix + regression test recommendation      (causix_fix_agent)
-  scenario/              validation scenario generation            (causix_scenario_agent)
-  documentation/         documentation / lessons report            (causix_documentation_agent)
-orchestrator/            FastAPI service, pipeline orchestrator, Aetherion entrypoint
-```
+| Repository | Purpose |
+|---|---|
+| [causix-core](https://github.com/MansiNataraj18/causix-core) | Shared engines (parser, graph, RCA, impact, validation) and reasoning contracts |
+| [causix-issue-agent](https://github.com/MansiNataraj18/causix-issue-agent) | Turns a raw report into a structured issue |
+| [causix-rca-agent](https://github.com/MansiNataraj18/causix-rca-agent) | Grounded root cause analysis |
+| [causix-impact-agent](https://github.com/MansiNataraj18/causix-impact-agent) | Explains the blast radius of a change |
+| [causix-fix-agent](https://github.com/MansiNataraj18/causix-fix-agent) | Recommends a fix and a regression test |
+| [causix-scenario-agent](https://github.com/MansiNataraj18/causix-scenario-agent) | Generates a validation scenario for a fix |
+| [causix-documentation-agent](https://github.com/MansiNataraj18/causix-documentation-agent) | Writes the documentation and lessons report |
+| [causix-orchestrator](https://github.com/MansiNataraj18/causix-orchestrator) | Chains the agents; FastAPI service and Aetherion entrypoint |
 
 Dependency direction: `orchestrator -> agents -> core`. Agents never depend on each other.
 
-## Development
-
-This is a [uv workspace](https://docs.astral.sh/uv/concepts/projects/workspaces/); one sync
-installs every member in editable mode.
+## Getting started
 
 ```bash
-uv sync --all-packages
-uv run --package causix-core pytest core
-uv run --package causix-rca-agent pytest agents/rca
-uv run --package causix-orchestrator pytest orchestrator
+git clone --recurse-submodules https://github.com/MansiNataraj18/Causix.git
+# already cloned?  git submodule update --init --recursive
 ```
 
-Each member is tested from its own directory (`cd core && uv run pytest`). Each has its own README.
+Each repository is developed and tested on its own (`uv sync && uv run pytest`). The agents and the
+orchestrator install `causix-core` from its GitHub URL, so you need read access to these repos.
+
+To pull the latest of every component: `git submodule update --remote`.

@@ -1,0 +1,24 @@
+[submodule "causix-core"]
+	path = causix-core
+	url = https://github.com/MansiNataraj18/causix-core.git
+[submodule "causix-issue-agent"]
+	path = causix-issue-agent
+	url = https://github.com/MansiNataraj18/causix-issue-agent.git
+[submodule "causix-rca-agent"]
+	path = causix-rca-agent
+	url = https://github.com/MansiNataraj18/causix-rca-agent.git
+[submodule "causix-impact-agent"]
+	path = causix-impact-agent
+	url = https://github.com/MansiNataraj18/causix-impact-agent.git
+[submodule "causix-fix-agent"]
+	path = causix-fix-agent
+	url = https://github.com/MansiNataraj18/causix-fix-agent.git
+[submodule "causix-scenario-agent"]
+	path = causix-scenario-agent
+	url = https://github.com/MansiNataraj18/causix-scenario-agent.git
+[submodule "causix-documentation-agent"]
+	path = causix-documentation-agent
+	url = https://github.com/MansiNataraj18/causix-documentation-agent.git
+[submodule "causix-orchestrator"]
+	path = causix-orchestrator
+	url = https://github.com/MansiNataraj18/causix-orchestrator.git
