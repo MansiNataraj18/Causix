@@ -1,0 +1,13 @@
+[project]
+name = "causix-workspace"
+version = "0.1.0"
+description = "Causix monorepo workspace root (not published)"
+requires-python = ">=3.12.10,<3.14"
+
+[tool.uv]
+package = false
+# The Aetherion SDK wheel (orchestrator) is macOS arm64 / Python 3.12 only, so resolve just for that.
+environments = ["sys_platform == 'darwin' and python_version == '3.12'"]
+
+[tool.uv.workspace]
+members = ["core", "agents/*", "orchestrator"]
